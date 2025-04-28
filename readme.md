@@ -23,7 +23,6 @@
   - [System Commands](#system-commands)
   - [User Commands](#user-commands)
   - [Utility Commands](#utility-commands)
-- [Advanced Configuration](#advanced-configuration)
 - [Troubleshooting](#troubleshooting)
 
 ## Initial Setup
