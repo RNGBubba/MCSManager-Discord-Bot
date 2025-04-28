@@ -1,0 +1,12 @@
+discord.py==2.4.0
+python-dotenv
+requests
+psutil
+asyncio
+aiohttp
+pillow
+pytz
+youtube-dl
+PyNaCl
+pycparser
+cffi
