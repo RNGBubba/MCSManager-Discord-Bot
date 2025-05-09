@@ -31,8 +31,36 @@
 - Python 3.12.10
 - Additional dependencies as listed in requirements.txt
 
+### Installation Steps (Short Way)
+1. Clone or download the bot files to your machine
+2. To start the bot and install requirements, run the bat file and follow instructions:
+   ```
+   Install & Start.bat
+   ```
 
-### Installation Steps
+## Install & Start.bat does the following
+
+1. Python Version Management
+- Detects if Python 3.12.10 is installed
+- Offers to download and install the exact required version if missing
+2. Dependency Management
+- Checks if pip is installed and installs it if needed
+- Compares installed packages against requirements.txt
+- Only installs missing packages, avoiding unnecessary reinstallation
+3. Configuration Setup
+- Creates a requirements.txt file if missing
+- Guides users through setting up the .env configuration file
+- Collects Discord bot token and MCSManager credentials for .env
+4. User-Friendly Interface
+- Displays clear instructions and progress information
+- Uses color coding for better readability
+- Provides helpful error messages when issues occur
+5. Bot Execution
+- Launches the Discord bot with the correct Python version (Even if you have other python versions installed)
+- Shows exit codes and error information if the bot crashes
+- Provides a clean shutdown process
+
+### Installation Steps (Long Way)
 1. Clone or download the bot files to your machine
 2. Install required dependencies:
    ```
