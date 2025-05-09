@@ -38,7 +38,8 @@
    ```
    DISCORD_BOT_TOKEN="" #Bot Token
    MCSMANAGER_ADDRESS="" #URL to connect to your MCS Manager
-   MCSMANAGER_API_KEY="" #Your MCS Manager API Key (Tutorial on how to get key at https://docs.mcsmanager.com/apis/get_apikey.html)
+   MCSMANAGER_API_KEY="" #Your MCS Manager API Key 
+(Tutorial on how to get key at https://docs.mcsmanager.com/apis/get_apikey.html)
 
    # Weather API Key [Optional] (for /utility weather command)
    # WEATHER_API_KEY=your_weather_api_key_here
@@ -61,7 +62,8 @@
    ```
    DISCORD_BOT_TOKEN="" #Bot Token
    MCSMANAGER_ADDRESS="" #URL to connect to your MCS Manager
-   MCSMANAGER_API_KEY="" #Your MCS Manager API Key (Tutorial on how to get key at https://docs.mcsmanager.com/apis/get_apikey.html)
+   MCSMANAGER_API_KEY="" #Your MCS Manager API Key 
+(Tutorial on how to get key at https://docs.mcsmanager.com/apis/get_apikey.html)
 
    # Weather API Key [Optional] (for /utility weather command)
    # WEATHER_API_KEY=your_weather_api_key_here
