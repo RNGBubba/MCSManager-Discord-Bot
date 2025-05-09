@@ -34,10 +34,6 @@
 
 ### Installation Steps
 1. Clone or download the bot files to your machine
-2. Install required dependencies:
-   ```
-   pip3 install -r requirements.txt
-   ```
 3. Edit and rename the `.env.example` to `.env` file in the root directory with the following:
    ```
    DISCORD_BOT_TOKEN="" #Bot Token
@@ -50,9 +46,9 @@
    # Translation API Key [Optional] (for Translate Message context menu)
    # TRANSLATION_API_KEY=your_translation_api_key_here
    ```
-4. To start the bot, run:
+3. To start the bot and install requirements, run:
    ```
-   python __init__.py
+   AIO Start.bat
    ```
 
 ### Creating a Discord Bot Account
