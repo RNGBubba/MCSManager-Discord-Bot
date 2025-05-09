@@ -35,10 +35,10 @@
 1. Clone or download the bot files to your machine
 2. To start the bot and install requirements, run the bat file and follow instructions:
    ```
-   AIO Start.bat
+   Install & Start.bat
    ```
 
-## AIO Start.bat does the following
+## Install & Start.bat does the following
 
 1. Python Version Management
 - Detects if Python 3.12.10 is installed
