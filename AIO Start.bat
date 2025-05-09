@@ -9,9 +9,9 @@ echo ===================================
 echo.
 
 REM Define required Python version
-set RECOMMENDED_PYTHON_VERSION=3.13.3
-set MINIMUM_PYTHON_VERSION=3.13.0
-set PYTHON_INSTALLER_URL=https://www.python.org/ftp/python/3.13.3/python-3.13.3-amd64.exe
+set RECOMMENDED_PYTHON_VERSION=3.11.8
+set MINIMUM_PYTHON_VERSION=3.11.0
+set PYTHON_INSTALLER_URL=https://www.python.org/ftp/python/3.11.8/python-3.11.8-amd64.exe
 
 REM Check if Python is installed
 python --version >nul 2>&1
@@ -57,34 +57,35 @@ if %errorlevel% neq 0 (
 )
 
 echo Python is installed. Checking version...
+echo Python found, checking version >> debug_log.txt
+
 set PYTHON_VERSION_OK=0
-for /f "tokens=2" %%V in ('python --version 2^>^&1') do (
+for /f "tokens=2" %%V in ('!PYTHON_CMD! --version 2^>^&1') do (
     set PYTHON_VERSION=%%V
     echo Detected Python version: !PYTHON_VERSION!
+    echo Detected Python version: !PYTHON_VERSION! >> debug_log.txt
     
-    REM Extract major, minor, and patch versions
     for /f "tokens=1,2,3 delims=." %%a in ("!PYTHON_VERSION!") do (
         set PY_MAJOR=%%a
         set PY_MINOR=%%b
         set PY_PATCH=%%c
+        echo Python version components: Major=!PY_MAJOR!, Minor=!PY_MINOR!, Patch=!PY_PATCH! >> debug_log.txt
     )
     
-    REM Check if version is 3.13.0 or higher
-    if !PY_MAJOR! GTR 3 (
-        set PYTHON_VERSION_OK=1
-    ) else if !PY_MAJOR! EQU 3 (
-        if !PY_MINOR! GTR 13 (
-            set PYTHON_VERSION_OK=1
-        ) else if !PY_MINOR! EQU 13 (
-            set PYTHON_VERSION_OK=1
+    if !PY_MAJOR! EQU 3 (
+        if !PY_MINOR! GEQ 11 (
+            if !PY_MINOR! LSS 13 (
+                set PYTHON_VERSION_OK=1
+                echo Python version is compatible >> debug_log.txt
+            )
         )
     )
 )
 
 if %PYTHON_VERSION_OK%==0 (
     echo.
-    echo WARNING: You are not using Python 3.13 or higher.
-    echo This bot requires Python 3.13.0 or newer.
+    echo WARNING: You are not using Python 3.11 - 3.12.
+    echo This bot requires Python 3.11 - 3.12.
     echo.
     set /p install_correct_version="Would you like to install Python %RECOMMENDED_PYTHON_VERSION% now? (Y/N): "
     if /i "!install_correct_version!"=="Y" (
