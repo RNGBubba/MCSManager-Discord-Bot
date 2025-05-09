@@ -46,7 +46,7 @@
    # Translation API Key [Optional] (for Translate Message context menu)
    # TRANSLATION_API_KEY=your_translation_api_key_here
    ```
-3. To start the bot and install requirements, run the bat file:
+3. To start the bot and install requirements, run the bat file: (Will Check for and install Python, Pip, & Bot Requirements)
    ```
    AIO Start.bat
    ```
