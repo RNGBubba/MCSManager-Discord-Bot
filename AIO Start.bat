@@ -9,7 +9,7 @@ echo ===================================
 echo.
 
 REM Define required Python version
-set REQUIRED_PYTHON_VERSION=3.13.3
+set RECOMMENDED_PYTHON_VERSION=3.13.3
 set MINIMUM_PYTHON_VERSION=3.13.0
 set PYTHON_INSTALLER_URL=https://www.python.org/ftp/python/3.13.3/python-3.13.3-amd64.exe
 
@@ -20,10 +20,10 @@ if %errorlevel% neq 0 (
     echo This bot requires Python 3.13 or higher.
     echo.
     
-    set /p install_python="Would you like to install Python %REQUIRED_PYTHON_VERSION% now? (Y/N): "
+    set /p install_python="Would you like to install Python %RECOMMENDED_PYTHON_VERSION% now? (Y/N): "
     if /i "!install_python!"=="Y" (
         echo.
-        echo Downloading Python %REQUIRED_PYTHON_VERSION% installer...
+        echo Downloading Python %RECOMMENDED_PYTHON_VERSION% installer...
         
         REM Create a temporary directory for the download
         mkdir temp 2>nul
@@ -32,7 +32,7 @@ if %errorlevel% neq 0 (
         powershell -Command "& {Invoke-WebRequest -Uri '%PYTHON_INSTALLER_URL%' -OutFile 'temp\python_installer.exe'}"
         
         echo.
-        echo Installing Python %REQUIRED_PYTHON_VERSION%...
+        echo Installing Python %RECOMMENDED_PYTHON_VERSION%...
         echo This may take a few minutes. Please wait...
         
         REM Run the installer with recommended settings (including PATH)
@@ -43,13 +43,13 @@ if %errorlevel% neq 0 (
         rmdir temp
         
         echo.
-        echo Python %REQUIRED_PYTHON_VERSION% installation completed.
+        echo Python %RECOMMENDED_PYTHON_VERSION% installation completed.
         echo Please restart this script to continue.
         pause
         exit
     ) else (
         echo.
-        echo Python installation skipped. Python %REQUIRED_PYTHON_VERSION% is required to run the Discord bot.
+        echo Python installation skipped. Python %RECOMMENDED_PYTHON_VERSION% is required to run the Discord bot.
         echo Please install Python manually and run this script again.
         pause
         exit
@@ -86,10 +86,10 @@ if %PYTHON_VERSION_OK%==0 (
     echo WARNING: You are not using Python 3.13 or higher.
     echo This bot requires Python 3.13.0 or newer.
     echo.
-    set /p install_correct_version="Would you like to install Python %REQUIRED_PYTHON_VERSION% now? (Y/N): "
+    set /p install_correct_version="Would you like to install Python %RECOMMENDED_PYTHON_VERSION% now? (Y/N): "
     if /i "!install_correct_version!"=="Y" (
         echo.
-        echo Downloading Python %REQUIRED_PYTHON_VERSION% installer...
+        echo Downloading Python %RECOMMENDED_PYTHON_VERSION% installer...
         
         REM Create a temporary directory for the download
         mkdir temp 2>nul
@@ -98,7 +98,7 @@ if %PYTHON_VERSION_OK%==0 (
         powershell -Command "& {Invoke-WebRequest -Uri '%PYTHON_INSTALLER_URL%' -OutFile 'temp\python_installer.exe'}"
         
         echo.
-        echo Installing Python %REQUIRED_PYTHON_VERSION%...
+        echo Installing Python %RECOMMENDED_PYTHON_VERSION%...
         echo This may take a few minutes. Please wait...
         
         REM Run the installer with recommended settings (including PATH)
@@ -109,7 +109,7 @@ if %PYTHON_VERSION_OK%==0 (
         rmdir temp
         
         echo.
-        echo Python %REQUIRED_PYTHON_VERSION% installation completed.
+        echo Python %RECOMMENDED_PYTHON_VERSION% installation completed.
         echo Please restart this script to continue.
         pause
         exit
