@@ -280,6 +280,9 @@ if not exist "%~dp0.env" (
         echo.
         echo Please enter the required information:
         echo.
+        echo The MCSManager Address is the Whole URL you use to access your web panel
+        echo Learn how to get your API Key at https://docs.mcsmanager.com/apis/get_apikey.html
+        echo.
         
         set "discord_token="
         set /p discord_token="Enter your Discord Bot Token: "
