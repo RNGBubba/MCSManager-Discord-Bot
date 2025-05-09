@@ -279,10 +279,10 @@ if not exist "%~dp0.env" (
         set /p discord_token="Enter your Discord Bot Token: "
         
         set "mcs_address="
-        set /p mcs_address="Enter your MCSManager Address (URL): "
+        set /p mcs_address="Enter your MCSManager Address (URL used to connect): "
         
         set "mcs_api_key="
-        set /p mcs_api_key="Enter your MCSManager API Key: "
+        set /p mcs_api_key="Enter your MCSManager API Key (Check https://docs.mcsmanager.com/apis/get_apikey.html): "
         
         echo.
         echo Creating .env file with your configuration...
