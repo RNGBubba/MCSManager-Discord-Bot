@@ -32,7 +32,7 @@
 - discord.py library
 - Additional dependencies as listed in requirements.txt
 
-### Installation Steps
+### Installation Steps (Short Way)
 1. Clone or download the bot files to your machine
 3. Edit and rename the `.env.example` to `.env` file in the root directory with the following:
    ```
@@ -49,6 +49,29 @@
 3. To start the bot and install requirements, run the bat file: (Will Check for and install Python, Pip, & Bot Requirements)
    ```
    AIO Start.bat
+   ```
+
+### Installation Steps (Long Way)
+1. Clone or download the bot files to your machine
+2. Install required dependencies:
+   ```
+   pip3 install -r requirements.txt
+   ```
+3. Edit and rename the `.env.example` to `.env` file in the root directory with the following:
+   ```
+   DISCORD_BOT_TOKEN="" #Bot Token
+   MCSMANAGER_ADDRESS="" #URL to connect to your MCS Manager
+   MCSMANAGER_API_KEY="" #Your MCS Manager API Key
+
+   # Weather API Key [Optional] (for /utility weather command)
+   # WEATHER_API_KEY=your_weather_api_key_here
+
+   # Translation API Key [Optional] (for Translate Message context menu)
+   # TRANSLATION_API_KEY=your_translation_api_key_here
+   ```
+4. To start the bot, run:
+   ```
+   python __init__.py
    ```
 
 ### Creating a Discord Bot Account
