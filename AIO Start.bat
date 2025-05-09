@@ -24,7 +24,6 @@ echo ######################################################
 set REQUIRED_PYTHON_VERSION=3.12.10
 set PYTHON_INSTALLER_URL=https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe
 
-REM First check if Python 3.12.10 is already installed and available
 echo Checking for Python 3.12.10...
 py -3.12 --version >nul 2>&1
 if %errorlevel% equ 0 (
@@ -41,7 +40,6 @@ if %errorlevel% equ 0 (
     )
 )
 
-REM Check if python3.12 command works
 python3.12 --version >nul 2>&1
 if %errorlevel% equ 0 (
     for /f "tokens=2" %%V in ('python3.12 --version 2^>^&1') do (
@@ -57,7 +55,6 @@ if %errorlevel% equ 0 (
     )
 )
 
-REM Check if standard python command is 3.12.10
 python --version >nul 2>&1
 if %errorlevel% equ 0 (
     for /f "tokens=2" %%V in ('python --version 2^>^&1') do (
@@ -120,11 +117,9 @@ if /i "!install_python!"=="Y" (
     exit /b 1
 )
 
-:python_found
 echo Python 3.12.10 found and will be used to run the bot.
 echo.
 
-REM Check if pip is installed for the selected Python version
 echo Checking for pip installation...
 !PYTHON_CMD! -m pip --version >nul 2>&1
 if %errorlevel% neq 0 (
@@ -166,7 +161,6 @@ if %errorlevel% neq 0 (
 
 echo Checking requirements...
 
-REM Check if requirements.txt exists
 if not exist "%~dp0requirements.txt" (
     echo.
     echo WARNING: requirements.txt file not found!
