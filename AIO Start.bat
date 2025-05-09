@@ -362,13 +362,4 @@ echo ######################################################
 
 echo.
 echo Press any key to exit...
-pauseerror code: %bot_exit_code%            #
-echo #     Check the error messages above for details.    #
-) else (
-    echo #                Bot has stopped.                    #
-)
-echo ######################################################
-
-echo.
-echo Press any key to exit...
 pause
