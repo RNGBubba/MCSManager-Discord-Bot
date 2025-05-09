@@ -28,7 +28,7 @@
 ## Initial Setup
 
 ### Requirements
-- Python 3.8 or higher
+- Python 3.13 or higher
 - discord.py library
 - Additional dependencies as listed in requirements.txt
 
