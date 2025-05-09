@@ -33,7 +33,7 @@
 
 ### Installation Steps (Short Way)
 1. Clone or download the bot files to your machine
-2. To start the bot and install requirements, run the bat file:
+2. To start the bot and install requirements, run the bat file and follow instructions:
    ```
    AIO Start.bat
    ```
