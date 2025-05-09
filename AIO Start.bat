@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 echo ===================================
-echo Unofficial MCSManager Discord Bot - All-In-One
+echo Unofficial MCSManager Discord Bot
 echo Made by Mr Bubba
 echo Discord ID: 1130162662907580456
 echo ===================================
