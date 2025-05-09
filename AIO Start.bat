@@ -8,25 +8,31 @@ echo Discord ID: 1130162662907580456
 echo ===================================
 echo.
 
+REM Define required Python version
+set REQUIRED_PYTHON_VERSION=3.13.3
+set MINIMUM_PYTHON_VERSION=3.13.0
+set PYTHON_INSTALLER_URL=https://www.python.org/ftp/python/3.13.3/python-3.13.3-amd64.exe
+
 REM Check if Python is installed
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
     echo Python is not installed on this system.
+    echo This bot requires Python 3.13 or higher.
     echo.
     
-    set /p install_python="Would you like to install Python now? (Y/N): "
+    set /p install_python="Would you like to install Python %REQUIRED_PYTHON_VERSION% now? (Y/N): "
     if /i "!install_python!"=="Y" (
         echo.
-        echo Downloading Python installer...
+        echo Downloading Python %REQUIRED_PYTHON_VERSION% installer...
         
         REM Create a temporary directory for the download
         mkdir temp 2>nul
         
-        REM Download Python installer (latest version)
-        powershell -Command "& {Invoke-WebRequest -Uri 'https://www.python.org/ftp/python/3.13.3/python-3.13.3-amd64.exe' -OutFile 'temp\python_installer.exe'}"
+        REM Download Python installer
+        powershell -Command "& {Invoke-WebRequest -Uri '%PYTHON_INSTALLER_URL%' -OutFile 'temp\python_installer.exe'}"
         
         echo.
-        echo Installing Python...
+        echo Installing Python %REQUIRED_PYTHON_VERSION%...
         echo This may take a few minutes. Please wait...
         
         REM Run the installer with recommended settings (including PATH)
@@ -37,13 +43,13 @@ if %errorlevel% neq 0 (
         rmdir temp
         
         echo.
-        echo Python installation completed.
+        echo Python %REQUIRED_PYTHON_VERSION% installation completed.
         echo Please restart this script to continue.
         pause
         exit
     ) else (
         echo.
-        echo Python installation skipped. Python is required to run the Discord bot.
+        echo Python installation skipped. Python %REQUIRED_PYTHON_VERSION% is required to run the Discord bot.
         echo Please install Python manually and run this script again.
         pause
         exit
@@ -51,8 +57,71 @@ if %errorlevel% neq 0 (
 )
 
 echo Python is installed. Checking version...
+set PYTHON_VERSION_OK=0
 for /f "tokens=2" %%V in ('python --version 2^>^&1') do (
-    echo Detected Python version: %%V
+    set PYTHON_VERSION=%%V
+    echo Detected Python version: !PYTHON_VERSION!
+    
+    REM Extract major, minor, and patch versions
+    for /f "tokens=1,2,3 delims=." %%a in ("!PYTHON_VERSION!") do (
+        set PY_MAJOR=%%a
+        set PY_MINOR=%%b
+        set PY_PATCH=%%c
+    )
+    
+    REM Check if version is 3.13.0 or higher
+    if !PY_MAJOR! GTR 3 (
+        set PYTHON_VERSION_OK=1
+    ) else if !PY_MAJOR! EQU 3 (
+        if !PY_MINOR! GTR 13 (
+            set PYTHON_VERSION_OK=1
+        ) else if !PY_MINOR! EQU 13 (
+            set PYTHON_VERSION_OK=1
+        )
+    )
+)
+
+if %PYTHON_VERSION_OK%==0 (
+    echo.
+    echo WARNING: You are not using Python 3.13 or higher.
+    echo This bot requires Python 3.13.0 or newer.
+    echo.
+    set /p install_correct_version="Would you like to install Python %REQUIRED_PYTHON_VERSION% now? (Y/N): "
+    if /i "!install_correct_version!"=="Y" (
+        echo.
+        echo Downloading Python %REQUIRED_PYTHON_VERSION% installer...
+        
+        REM Create a temporary directory for the download
+        mkdir temp 2>nul
+        
+        REM Download Python installer
+        powershell -Command "& {Invoke-WebRequest -Uri '%PYTHON_INSTALLER_URL%' -OutFile 'temp\python_installer.exe'}"
+        
+        echo.
+        echo Installing Python %REQUIRED_PYTHON_VERSION%...
+        echo This may take a few minutes. Please wait...
+        
+        REM Run the installer with recommended settings (including PATH)
+        temp\python_installer.exe /quiet InstallAllUsers=1 PrependPath=1
+        
+        REM Clean up
+        del /Q temp\python_installer.exe
+        rmdir temp
+        
+        echo.
+        echo Python %REQUIRED_PYTHON_VERSION% installation completed.
+        echo Please restart this script to continue.
+        pause
+        exit
+    ) else (
+        echo.
+        echo Python 3.13 or higher is required to run the Discord bot.
+        echo Please install a compatible Python version manually and run this script again.
+        pause
+        exit
+    )
+) else (
+    echo Python version check passed. You have Python 3.13 or higher installed.
 )
 echo.
 
