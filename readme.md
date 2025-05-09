@@ -28,7 +28,7 @@
 ## Initial Setup
 
 ### Requirements
-- Python 3.11 or 3.12
+- Python 3.12.10
 - Additional dependencies as listed in requirements.txt
 
 ### Installation Steps (Short Way)
