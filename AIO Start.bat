@@ -23,7 +23,7 @@ if %errorlevel% neq 0 (
         mkdir temp 2>nul
         
         REM Download Python installer (latest version)
-        powershell -Command "& {Invoke-WebRequest -Uri 'https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe' -OutFile 'temp\python_installer.exe'}"
+        powershell -Command "& {Invoke-WebRequest -Uri 'https://www.python.org/ftp/python/3.13.3/python-3.13.3-amd64.exe' -OutFile 'temp\python_installer.exe'}"
         
         echo.
         echo Installing Python...
